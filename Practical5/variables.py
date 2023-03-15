@@ -4,9 +4,9 @@ c = 116.39
 d = a-b
 e = c-a
 if d<e:
-  print ("d")
+  print (d, "Los Angeles")
 else:
-  print ("e")
+  print (e, "Haining")
 X = "True"
 Y = "False"
 W = "X" and "Y"
