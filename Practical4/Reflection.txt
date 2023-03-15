@@ -1,1 +1,2 @@
-Everything gose well!
+Everything gose well though it costs lots of my time.
+I 'm still confused about how to copy one file to another directory. 
