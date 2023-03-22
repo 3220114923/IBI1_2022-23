@@ -10,5 +10,6 @@ plt.ylabel('Costs')
 plt.title('Olympic Costs')
 plt.xticks(ind, ('LA 1984', 'Seoul 1988', 'Barcelona 1992', 'Atlanta 1996', 'Sydney 2000', 'Athens 2003', 'Beijing 2008', 'London 2012'))
 #plt.yticks(ind, (0, 81, 10))
+plt.xticks(fontsize=6)
 
 plt.show()
