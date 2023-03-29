@@ -5,12 +5,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-os.chdir("/MINGW64/Jonas/IBI1_2022-23/Practical7")
-
 covid_data = pd.read_csv("full_data.csv")
 
 # Showing the second column from every 100th row from the first 1000 rows
-covid_data.iloc[0:1100:100, 2]
+
+a = covid_data.iloc[0:1100:100, 2]
+print(a)
 
 # Using a Boolean to show “total cases” for all rows corresponding to Afghanistan
 
