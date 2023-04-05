@@ -14,6 +14,11 @@ print(a)
 
 # Using a Boolean to show “total cases” for all rows corresponding to Afghanistan
 
+afghanistan_data = covid_data[covid_data["location"] == "Afghanistan"]
+afghanistan_total_cases = afghanistan_data["total_cases"]
+
+print(afghanistan_total_cases)
+
 # Computing the mean number of new cases and new deaths on 31 March 2020
 
 new_data = covid_data[covid_data['date'] == '2020-03-31'][['location', 'new_cases', 'new_deaths']]
@@ -34,6 +39,7 @@ plt.boxplot([new_data['new_cases'], new_data['new_deaths']])
 plt.xticks([1, 2], ['New Cases', 'New Deaths'])
 plt.ylabel('Number')
 plt.title('New Cases and New Deaths on 31 March 2020')
+
 plt.show()
 
 # Plotting both new cases and new deaths worldwide over time
@@ -49,6 +55,18 @@ plt.xlabel('Date')
 plt.ylabel('Number')
 plt.title('New Cases and New Deaths Across the World')
 plt.legend()
+
 plt.show()
 
 # Code to answer the question
+
+march_31_data = covid_data[covid_data['date'] == '2020-03-31']
+
+total_cases = march_31_data.groupby('location')['total_cases'].sum()
+
+plt.boxplot(total_cases.values)
+plt.xticks([1], ['Total cases on 31 March 2020'])
+plt.ylabel('Total cases')
+
+plt.show()
+
