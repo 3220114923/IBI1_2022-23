@@ -34,8 +34,19 @@ print("Mean new deaths:", mean_new_deaths)
 # Creating boxplot of new cases and new deaths on 31 March 2020
 
 import matplotlib.pyplot as plt
-
-plt.boxplot([new_data['new_cases'], new_data['new_deaths']])
+boxprops = {'facecolor': 'blue', 'edgecolor': 'black', 'color': 'lightblue'}
+flierprops = {'marker': 'o', 'markerfacecolor': 'red', 'markersize': 5, 'linestyle': 'none'}
+plt.boxplot([new_data['new_cases'], new_data['new_deaths']],
+            vert=True,
+            whis=1.5,
+            patch_artist=True,
+            meanline=False,
+            showbox=True,
+            showcaps=True,
+            showfliers=True,
+            notch=False,
+            boxprops=boxprops,
+            flierprops=flierprops)
 plt.xticks([1, 2], ['New Cases', 'New Deaths'])
 plt.ylabel('Number')
 plt.title('New Cases and New Deaths on 31 March 2020')
@@ -64,7 +75,15 @@ march_31_data = covid_data[covid_data['date'] == '2020-03-31']
 
 total_cases = march_31_data.groupby('location')['total_cases'].sum()
 
-plt.boxplot(total_cases.values)
+plt.boxplot(total_cases.values,
+            vert=True,
+            whis=1.5,
+            patch_artist=False,
+            meanline=False,
+            showbox=True,
+            showcaps=True,
+            showfliers=True,
+            notch=False)
 plt.xticks([1], ['Total cases on 31 March 2020'])
 plt.ylabel('Total cases')
 
