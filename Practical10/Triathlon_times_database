@@ -1,0 +1,16 @@
+class Triathlon:
+    def __init__(self, first_name, last_name, location, swim_time, cycle_time, run_time):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.location = location
+        self.swim_time = swim_time
+        self.cycle_time = cycle_time
+        self.run_time = run_time
+        self.total_time = swim_time + cycle_time + run_time
+    
+    def print_details(self):
+        print(f"{self.first_name} {self.last_name} participated in {self.location} and achieved a swim time of {self.swim_time}, cycle time of {self.cycle_time}, run time of {self.run_time}, and a total time of {self.total_time}.")
+
+# Example 
+triathlete = Triathlon("Linfeng", "Zhang", "Beijing", 1000, 2000, 3000)
+triathlete.print_details()
