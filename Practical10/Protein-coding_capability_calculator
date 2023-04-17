@@ -1,0 +1,31 @@
+def coding_percentage(sequence):
+    sequence = sequence.upper()
+    start_codon = 'ATG'
+    stop_codon = 'TGA'
+    total_length = len(sequence)
+    coding_length = 0
+
+    start_index = sequence.find(start_codon)
+    stop_index = sequence.rfind(stop_codon)
+
+    if start_index != -1 and stop_index != -1 and start_index < stop_index:
+        coding_sequence = sequence[start_index:stop_index + 3]
+        coding_length = len(coding_sequence) - coding_sequence.count('N')
+
+    coding_percentage = coding_length / total_length * 100
+
+    if coding_percentage > 50:
+        label = 'protein-coding'
+    elif coding_percentage < 10:
+        label = 'non-coding'
+    else:
+        label = 'unclear'
+
+    return coding_percentage, label
+
+# To test our codes
+sequence = input('Tested DNA sequence:')
+
+coding_percentage, label = coding_percentage(sequence)
+print(f'Coding percentage: {coding_percentage:.2f}%')
+print(f'Label: {label}')
