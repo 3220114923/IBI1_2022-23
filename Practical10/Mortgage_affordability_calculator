@@ -1,0 +1,9 @@
+def can_buy_a_house(value, salary):
+    max_house_value = 5 * salary
+    return value <= max_house_value
+
+value = 200000
+salary = 41000
+can_buy = can_buy_a_house(value, salary)
+print("Can the purchaser buy the house?", can_buy)
+
