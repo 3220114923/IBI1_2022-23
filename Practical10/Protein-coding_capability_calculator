@@ -4,7 +4,6 @@ def coding_percentage(sequence):
     stop_codon = 'TGA'
     total_length = len(sequence)
     coding_length = 0
-
     start_index = sequence.find(start_codon)
     stop_index = sequence.rfind(stop_codon)
 
@@ -23,9 +22,10 @@ def coding_percentage(sequence):
 
     return coding_percentage, label
 
-# To test our codes
+# To test the codes
 sequence = input('Tested DNA sequence:')
 
 coding_percentage, label = coding_percentage(sequence)
 print(f'Coding percentage: {coding_percentage:.2f}%')
 print(f'Label: {label}')
+
