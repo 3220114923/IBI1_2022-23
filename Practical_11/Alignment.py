@@ -29,11 +29,60 @@ identity = 0
 for i in range(len(seq1)):
     if seq1[i] == seq2[i]:
         identity += 1
-
 percentage_identity = (identity/len(seq1)) * 100
 
 # Print the results
-print(seq1_name + ": " + seq1)
-print(seq2_name + ": " + seq2)
+print("Alignment score: " + str(score))
+print("Percentage identity: " + str(percentage_identity) + "%")
+
+# Comparing seq1 with seq3
+with open('ACE2_mouse.fa', 'r') as c:
+    seq3_name = c.readline().strip()
+    seq3 = c.readline().strip()
+
+with open('BLOSUM.txt', 'r') as f:
+        header = f.readline().split()
+        for line in f:
+            values = line.split()
+            amino_acid1 = values[0]
+            for i in range(1, len(values)):
+                amino_acid3 = header[i - 1]
+                blosum62[(amino_acid1, amino_acid3)] = int(values[i])
+
+for i in range(len(seq1)):
+    amino_acid1 = seq1[i]
+    amino_acid3 = seq3[i]
+    score += blosum62[(amino_acid1, amino_acid3)]
+
+identity = 0
+for i in range(len(seq1)):
+    if seq1[i] == seq3[i]:
+        identity += 1
+percentage_identity = (identity/len(seq2)) * 100
+
+print("Alignment score: " + str(score))
+print("Percentage identity: " + str(percentage_identity) + "%")
+
+# Comparing seq2 with seq3
+with open('BLOSUM.txt', 'r') as f:
+    header = f.readline().split()
+    for line in f:
+        values = line.split()
+        amino_acid2 = values[0]
+        for i in range(1, len(values)):
+            amino_acid3 = header[i - 1]
+            blosum62[(amino_acid2, amino_acid3)] = int(values[i])
+
+for i in range(len(seq1)):
+    amino_acid2 = seq2[i]
+    amino_acid3 = seq3[i]
+    score += blosum62[(amino_acid2, amino_acid3)]
+
+identity = 0
+for i in range(len(seq2)):
+    if seq2[i] == seq3[i]:
+        identity += 1
+percentage_identity = (identity/len(seq3)) * 100
+
 print("Alignment score: " + str(score))
 print("Percentage identity: " + str(percentage_identity) + "%")
